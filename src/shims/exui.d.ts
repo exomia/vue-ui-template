@@ -1,9 +1,8 @@
 import { InputFlags } from '@/exUi/InputFlags';
 
 declare global {
-    // tslint:disable
+    // tslint:disable-next-line
     interface Window {
-        // tslint:enable
         cefSharp: {
             /**
              * Bind the object that matches objectName,
