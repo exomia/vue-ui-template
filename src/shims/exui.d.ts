@@ -2,6 +2,13 @@ import { InputFlags } from '@/exUi/InputFlags';
 
 declare global {
     // tslint:disable-next-line
+    interface HTMLElement {
+        _exUiFocusIn: (() => Promise<void>) | null;
+        _exUiFocusOut: (() => Promise<void>) | (() => void) | null;
+        _exUikeyUp: ((event: KeyboardEvent) => Promise<void>) | null;
+        _hasFocus: boolean;
+    }
+    // tslint:disable-next-line
     interface Window {
         cefSharp: {
             /**
