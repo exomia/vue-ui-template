@@ -1,19 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import index from '../views/Index.vue';
+
+import routes from '@/router/routes';
 
 Vue.use(VueRouter);
 
-const routes = [
-    {
-        path: '/',
-        name: 'index',
-        component: index,
-    },
-];
-
-const router = new VueRouter({
+export default new VueRouter({
     routes,
 });
-
-export default router;
