@@ -15,21 +15,15 @@ Vue.directive('ui-focusable', {
                 flags &= ~InputFlags[key];
             }
         }
-        el._exUiFocusIn = async () => {
-            await window.exUiInput.removeFlag(flags);
-        };
+        el._exUiFocusIn = async () => window.exUiInput.removeFlag(flags);
         el.addEventListener('focusin', el._exUiFocusIn);
 
         if (!binding.arg) {
-            el._exUiFocusOut = async () => {
-                await window.exUiInput.setFlag(flags);
-            };
+            el._exUiFocusOut = async () => window.exUiInput.setFlag(flags);
         } else {
-            el._exUiFocusOut = () => {
-                el.focus();
-            };
-            el._exUikeyUp = async event => {
-                if (binding.arg === event.key) {
+            el._exUiFocusOut = () => el.focus();
+            el._exUikeyUp = async e => {
+                if (binding.arg === e.key) {
                     el.removeEventListener('focusout', el._exUiFocusOut);
                     el.blur();
                     await window.exUiInput.setFlag(flags);
@@ -37,7 +31,6 @@ Vue.directive('ui-focusable', {
             };
             el.addEventListener('keyup', el._exUikeyUp);
         }
-
         el.addEventListener('focusout', el._exUiFocusOut);
     },
     unbind(el, binding) {

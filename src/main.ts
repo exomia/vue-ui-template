@@ -1,4 +1,4 @@
-import './exUi/exUi.js';
+import './exUi/exUi';
 
 import Vue from 'vue';
 import App from './App.vue';
